@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notes - Notes Gallery</title>
+  <link rel="stylesheet" href="notes.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <h1><a href="index.html">NickKurtDale.com</a></h1>
+    <a href="index.html"><button>Back to Dashboard</button></a>
+  </nav>
+
+  <!-- Page heading -->
+  <div class="page-header">
+    <h2 id="pageTitle">Notes</h2>
+  </div>
+
+  <!-- Notes grid -->
+  <div class="notes-container">
+
+    <!-- Empty state (shown when no notes) -->
+    <p id="emptyMsg" style="display:none;">No notes found for this branch and semester.</p>
+
+    <!-- Notes cards will be injected here by JS -->
+    <div id="notesGrid" class="notes-grid"></div>
+
+  </div>
+
+  <script src="notes.js"></script>
+
+</body>
+</html>

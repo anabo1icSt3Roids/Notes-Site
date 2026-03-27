@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notes Gallery</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav>
+    <h1>NickKurtDale.com</h1>
+  </nav>
+
+  <main>
+    <div class="card">
+
+      <h2>
+        Browse Notes
+      </h2>
+      <p>Select your branch and semester to view notes.</p>
+
+      <label for="branch">Branch</label>
+      <select id="branch">
+        <option value="" disabled selected>Select branch...</option>
+        <option value="CSE">CSE - Computer Science Engineering</option>
+        <option value="ECE">ECE - Electronics & Communication Engineering</option>
+        <option value="EE">EE - Electrical Engineering</option>
+        <option value="ME">ME - Mechanical Engineering</option>
+        <option value="CE">CE - Civil Engineering</option>
+      </select>
+
+      <label for="sem">Semester</label>
+      <select id="sem">
+        <option value="" disabled selected>Select semester...</option>
+        <option value="1">Semester 1</option>
+        <option value="2">Semester 2</option>
+        <option value="3">Semester 3</option>
+        <option value="4">Semester 4</option>
+        <option value="5">Semester 5</option>
+        <option value="6">Semester 6</option>
+        <option value="7">Semester 7</option>
+        <option value="8">Semester 8</option>
+      </select>
+
+      <hr />
+
+      <button class="btn-view" onclick="viewNotes()">View Notes</button>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

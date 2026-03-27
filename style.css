@@ -1,0 +1,147 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+/* --- Navbar --- */
+nav {
+  background-color: #ffffff;
+  border-bottom: 1px solid #cccccc;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav h1 {
+  font-size: 20px;
+  color: #333333;
+}
+
+nav h1 span {
+  color: #2255cc;
+}
+
+
+/* --- Page center --- */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 55px);
+  padding: 30px;
+}
+
+/* --- Card --- */
+.card {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  padding: 36px 32px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.card h2 {
+  font-size: 22px;
+  margin-bottom: 6px;
+  color: #222222;
+}
+
+.card p {
+  font-size: 13px;
+  color: #777777;
+  margin-bottom: 24px;
+}
+
+/* --- Form fields --- */
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  color: #444444;
+  margin-bottom: 5px;
+}
+
+select {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  background-color: #fafafa;
+  margin-bottom: 16px;
+}
+
+select:focus {
+  outline: none;
+  border-color: #2255cc;
+}
+
+/* --- Divider --- */
+hr {
+  border: none;
+  border-top: 1px solid #eeeeee;
+  margin: 20px 0;
+}
+
+/* --- Buttons --- */
+.btn-view {
+  width: 100%;
+  padding: 10px;
+  background-color: #2255cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.btn-view:hover {
+  background-color: #1a44aa;
+}
+
+.btn-upload {
+  width: 100%;
+  padding: 10px;
+  background-color: white;
+  color: #2255cc;
+  border: 1px solid #2255cc;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-upload:hover {
+  background-color: #eef2ff;
+}
+
+/* --- Admin badge --- */
+.admin-badge {
+  font-size: 11px;
+  background-color: #eef2ff;
+  color: #2255cc;
+  border: 1px solid #c0ccff;
+  border-radius: 20px;
+  padding: 2px 8px;
+  margin-left: 8px;
+}
+
+/* --- Footer note --- */
+.footer-note {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 12px;
+  color: #aaaaaa;
+}
+
+.footer-note a {
+  color: #2255cc;
+}
