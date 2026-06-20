@@ -91,7 +91,7 @@ loginBtn.addEventListener("click", async () => {
     if (isAdmin) {
       window.location.href = "dashboard.html";
     } else {
-      window.location.href = "landing.html";
+      window.location.href = "index.html";
     }
 
   } catch (error) {

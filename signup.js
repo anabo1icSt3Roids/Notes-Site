@@ -42,9 +42,9 @@ signupBtn.addEventListener('click', async () => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
-    
+
     alert('Account created successfully!');
-    
+
     // Check if the newly created user is an admin
     const adminEmails = [
       "warmblanket05@gmail.com",
@@ -55,7 +55,7 @@ signupBtn.addEventListener('click', async () => {
     if (adminEmails.includes(user.email.toLowerCase())) {
         window.location.href = 'dashboard.html';
     } else {
-        window.location.href = 'landing.html';
+        window.location.href = 'index.html';
     }
   } catch (error) {
     console.error("Signup Error:", error);
