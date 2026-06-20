@@ -3,34 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Notes - Notes Gallery</title>
+  <title>Resources - GCU Notes Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="notes.css" />
 </head>
 <body>
 
   <!-- Navbar -->
   <nav>
-    <h1><a href="index.html">NickKurtDale.com</a></h1>
-    <a href="index.html"><button>Back to Dashboard</button></a>
+    <a href="landing.html" class="nav-brand">
+      <img src="logo.png" alt="University Logo" class="logo-img">
+      <h1>GCU <span>Notes Portal</span></h1>
+    </a>
+
+    <div class="nav-links">
+      <a href="landing.html" class="active">Home</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </nav>
 
-  <!-- Page heading -->
-  <div class="page-header">
-    <h2 id="pageTitle">Notes</h2>
+  <main style="min-height: calc(100vh - 160px);">
+    <!-- Page heading -->
+    <div class="page-header">
+      <h2 id="pageTitle">Resources</h2>
+      <p>Download study materials, lecture notes, and question banks.</p>
+    </div>
+
+    <!-- Notes container -->
+    <div class="notes-container">
+      <!-- Empty state -->
+      <p id="emptyMsg" style="display:none;">No materials found for this selection.</p>
+      <!-- Notes grid -->
+      <div id="notesGrid" class="notes-grid"></div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 GCU Notes Portal | All rights reserved</p>
+  </footer>
+
+  <!-- Resource Modal -->
+  <div id="resourceModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div class="modal-header">
+        <h4 id="modalSubject">Subject Name</h4>
+        <p>Available Study Resources</p>
+      </div>
+      <div id="modalList" class="modal-resource-list">
+        <!-- Resource items will be injected here -->
+      </div>
+    </div>
   </div>
 
-  <!-- Notes grid -->
-  <div class="notes-container">
-
-    <!-- Empty state (shown when no notes) -->
-    <p id="emptyMsg" style="display:none;">No notes found for this branch and semester.</p>
-
-    <!-- Notes cards will be injected here by JS -->
-    <div id="notesGrid" class="notes-grid"></div>
-
-  </div>
-
-  <script src="notes.js"></script>
+  <script type="module" src="notes.js"></script>
 
 </body>
 </html>

@@ -1,3 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --primary-blue: #1a3b8b;
+  --dark-blue: #132c66;
+  --bg-light: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --card-bg: #ffffff;
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 25px 50px -12px rgb(0 0 0 / 0.1);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,117 +21,246 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
 }
 
-/* --- Navbar --- */
+/* --- Navigation --- */
 nav {
-  background-color: #ffffff;
-  border-bottom: 1px solid #cccccc;
-  padding: 12px 24px;
+  background-color: white;
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 2.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-nav h1 a {
-  font-size: 20px;
-  color: #333333;
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   text-decoration: none;
 }
 
-nav button {
-  padding: 6px 14px;
-  background-color: white;
-  color: #555555;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 13px;
+.logo-img {
+  height: 38px;
+  width: auto;
 }
 
-nav button:hover {
-  background-color: #f5f5f5;
+.nav-brand h1 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
 }
 
-/* --- Page header --- */
+.nav-brand h1 span {
+  color: var(--primary-blue);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* --- Main Layout --- */
+main {
+  flex: 1;
+  padding: 4rem 2rem 6rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
 .page-header {
-  padding: 24px 30px 10px 30px;
+  margin-bottom: 4rem;
+  text-align: left;
 }
 
 .page-header h2 {
-  font-size: 22px;
-  color: #222222;
-  margin-bottom: 4px;
+  font-size: 2.75rem;
+  font-weight: 850;
+  color: var(--text-main);
+  letter-spacing: -0.05em;
+  line-height: 1;
+  margin-bottom: 0.75rem;
 }
 
 .page-header p {
-  font-size: 13px;
-  color: #777777;
+  color: var(--text-muted);
+  font-size: 1.2rem;
 }
 
-/* --- Notes container --- */
-.notes-container {
-  padding: 20px 30px 40px 30px;
-}
-
-#emptyMsg {
-  color: #999999;
-  font-size: 14px;
-  margin-top: 20px;
-}
-
-/* --- Notes grid --- */
+/* --- Notes Grid --- */
 .notes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 16px;
-  margin-top: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2.5rem;
 }
 
 /* --- Note card --- */
 .note-card {
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
-  border-radius: 8px;
-  padding: 20px 18px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 28px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .note-card h3 {
-  font-size: 15px;
-  color: #222222;
-  margin-bottom: 6px;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 0.75rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
 }
 
 .note-card p {
-  font-size: 12px;
-  color: #888888;
-  margin-bottom: 14px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  font-weight: 500;
 }
 
-.note-card a {
-  display: inline-block;
-  padding: 6px 14px;
-  background-color: #2255cc;
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.btn-access {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 0.85rem 0.5rem;
+  background-color: var(--primary-blue);
   color: white;
-  border-radius: 4px;
-  font-size: 13px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
   text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.note-card a:hover {
-  background-color: #1a44aa;
+.btn-access.secondary {
+  background-color: #f1f5f9;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
 }
 
-/* --- Tag (subject label) --- */
-.tag {
-  display: inline-block;
-  font-size: 11px;
-  background-color: #eef2ff;
-  color: #2255cc;
-  border: 1px solid #c0ccff;
+.btn-access:hover {
+  filter: brightness(0.95);
+  transform: translateY(-1px);
+}
+
+/* --- Modal --- */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.modal-content {
+  background: white;
+  width: 100%;
+  max-width: 460px;
+  border-radius: 32px;
+  padding: 3rem;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+.modal-header {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.modal-header h4 {
+  font-size: 1.75rem;
+  font-weight: 850;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.04em;
+}
+
+.modal-resource-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-resource-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  background: #f8fafc;
+  border: 1.5px solid var(--border-color);
   border-radius: 20px;
-  padding: 2px 8px;
-  margin-bottom: 10px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: #f1f5f9;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+/* --- Footer --- */
+.footer {
+  background-color: #000000;
+  padding: 4rem 1.5rem;
+  color: #64748b;
+  text-align: center;
+}
+
+.footer p {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  main { padding: 3rem 1.5rem; }
+  .page-header h2 { font-size: 2.25rem; }
 }

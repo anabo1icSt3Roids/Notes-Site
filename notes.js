@@ -1,62 +1,56 @@
-// notes.js - temporary, no backend yet
+import { collection, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { db } from './firebase-config.js';
 
-// --- Read branch and sem from URL ---
 const params = new URLSearchParams(window.location.search);
 const branch = params.get('branch');
 const sem = params.get('sem');
 
-// --- Update page title ---
-document.getElementById('pageTitle').textContent = branch + ' - Semester ' + sem + ' Notes';
+const notesGrid = document.getElementById('notesGrid');
+const emptyMsg = document.getElementById('emptyMsg');
+const pageTitle = document.getElementById('pageTitle');
 
-const dummyNotes = [
-  {
-    title: 'Data Structures',
-    fileUrl: '#'
-  },
-  {
-    title: 'Operating Systems',
-    fileUrl: '#'
-  },
-  {
-    title: 'DBMS',
-    fileUrl: '#'
-  },
-  {
-    title: 'Computer Networks',
-    fileUrl: '#'
-  }
-];
+if (branch && sem) pageTitle.textContent = `${branch} - Semester ${sem} Resources`;
 
-// --- Render notes cards ---
-function renderNotes(notes) {
-  const grid = document.getElementById('notesGrid');
-  const emptyMsg = document.getElementById('emptyMsg');
+async function fetchNotes() {
+    if (!branch || !sem) return;
 
-  if (notes.length === 0) {
-    emptyMsg.style.display = 'block';
-    return;
-  }
+    notesGrid.innerHTML = 'Loading resources...';
+    emptyMsg.style.display = 'none';
 
-  notes.forEach(function(note) {
-    const card = document.createElement('div');
-    card.className = 'note-card';
+    try {
+        const q = query(collection(db, "resources"), where("branch", "==", branch), where("semester", "==", sem));
+        const snap = await getDocs(q);
+        notesGrid.innerHTML = '';
 
-  card.innerHTML =
-    '<h3>' + note.title + '</h3>' +
-    '<p>Uploaded by: Admin</p>' +
-    '<a href="' + note.fileUrl + '" target="_blank">Download</a>';
+        if (snap.empty) {
+            emptyMsg.style.display = 'block';
+            return;
+        }
 
-    grid.appendChild(card);
-  });
+        snap.forEach(doc => {
+            const data = doc.data();
+            const viewUrl = data.pdfURL;
+            const downUrl = viewUrl.replace('/upload/', '/upload/fl_attachment/');
+
+            const card = document.createElement('div');
+            card.className = 'note-card';
+            card.innerHTML = `
+                <div class="note-info">
+                    <h3>${data.subject}</h3>
+                    <p>${data.title}</p>
+                    <small>📄 ${data.fileName}</small>
+                </div>
+                <div class="card-actions">
+                    <a href="${viewUrl}" target="_blank" class="btn-access secondary">View</a>
+                    <a href="${downUrl}" class="btn-access">Download</a>
+                </div>
+            `;
+            notesGrid.appendChild(card);
+        });
+    } catch (e) {
+        console.error(e);
+        notesGrid.innerHTML = 'Connection Error.';
+    }
 }
 
-// --- Later: replace dummyNotes with fetch call like this ---
-// async function loadNotes() {
-//   const res = await fetch('http://localhost:5000/api/notes?branch=' + branch + '&sem=' + sem);
-//   const data = await res.json();
-//   renderNotes(data.notes);
-// }
-// loadNotes();
-
-// For now use dummy data
-renderNotes(dummyNotes);
+fetchNotes();
