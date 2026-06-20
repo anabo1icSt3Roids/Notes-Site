@@ -1,0 +1,436 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Colors - Pure GCU Blue & White Branding */
+  --primary-blue: #1a3b8b; /* Matched to GCU Logo Navy */
+  --dark-blue: #132c66;
+  --bg-light: #ffffff;    /* Pure Clean White */
+  --section-bg: #f8fafc;  /* Subtle grey for section splits */
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --card-bg: #ffffff;
+
+  /* Modern Depth */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 25px 50px -12px rgb(0 0 0 / 0.1);
+}
+
+/* --- Core Reset --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+}
+
+/* --- Navigation --- */
+nav {
+  background-color: white;
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo-img {
+  height: 38px;
+  width: auto;
+}
+
+.nav-brand h1 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+.nav-brand h1 span {
+  color: var(--text-main);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+  color: var(--primary-blue);
+}
+
+/* --- Hero Section - Solid GCU Branding --- */
+.hero-wrapper {
+  background-color: var(--primary-blue);
+  background-image:
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.1), transparent 40%),
+    radial-gradient(circle at bottom left, rgba(0, 0, 0, 0.05), transparent 40%);
+  width: 100%;
+  padding-bottom: 140px;
+  display: flex;
+  justify-content: center;
+}
+
+.hero {
+  text-align: center;
+  max-width: 800px;
+  padding: 6rem 1.5rem 4rem;
+  color: white;
+}
+
+.hero h2 {
+  font-size: clamp(2.5rem, 6vw, 3.75rem);
+  font-weight: 850;
+  color: white;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.hero p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* --- Main Layout --- */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-container {
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- Overlap Filter Card --- */
+.card {
+  background-color: var(--card-bg);
+  border-radius: 24px;
+  padding: 3rem;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: var(--shadow-lg);
+  margin-top: -110px; /* Overlap */
+  border: 1px solid var(--border-color);
+  position: relative;
+  z-index: 10;
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.card h3 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.03em;
+}
+
+.card .description {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+}
+
+/* --- Selection Elements --- */
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+select {
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  font-size: 1rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text-main);
+  font-family: inherit;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.25rem center;
+  background-size: 1.25rem;
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 4px rgba(34, 85, 204, 0.08);
+}
+
+.btn-view {
+  width: 100%;
+  padding: 1.125rem;
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 1rem;
+}
+
+.btn-view:hover {
+  background-color: var(--dark-blue);
+  transform: translateY(-1px);
+}
+
+.section-title {
+  font-size: 2.25rem;
+  font-weight: 850;
+  margin-bottom: 4rem;
+  letter-spacing: -0.04em;
+  text-align: center;
+}
+
+/* --- Stats Cards --- */
+.stats-section {
+  margin-top: 5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.stat-card {
+  background: white;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+}
+
+.stat-card h3 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--primary-blue);
+  margin-bottom: 0.25rem;
+}
+
+.stat-card p {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* --- Features (Why This Site?) --- */
+.features-section-container {
+  background-color: var(--primary-blue);
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 1.5rem;
+  margin: 4rem 0;
+}
+
+.features-section-container .section-title {
+  color: white;
+  margin-bottom: 2.5rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1060px;
+  justify-items: center;
+}
+
+.feature-card {
+  background: white;
+  padding: 3.5rem 2.5rem;
+  border-radius: 20px;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 10px 25px -5px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  max-width: 320px;
+  min-height: 340px; /* Adjusted since icons are gone */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center text vertically in card */
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+}
+
+.feature-card h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: var(--text-main);
+  text-align: center;
+}
+
+.feature-card p {
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-size: 0.9375rem;
+  text-align: center;
+}
+
+/* --- About Section --- */
+.about-section {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 8rem 0;
+}
+
+.about-section p {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* --- CTA Section - Solid GCU Card --- */
+.cta-section {
+  background-color: var(--primary-blue);
+  color: white;
+  border-radius: 32px;
+  padding: 5rem 3rem;
+  margin: 7rem 0;
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+}
+
+.cta-section h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.cta-section p {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  margin-bottom: 2.5rem;
+}
+
+#browseBtn {
+  display: inline-block;
+  text-decoration: none;
+  background: white;
+  color: var(--primary-blue);
+  border: none;
+  padding: 1rem 3rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#browseBtn:hover {
+  transform: scale(1.05);
+}
+
+/* --- Footer --- */
+.footer {
+  background-color: #000000;
+  padding: 4rem 1.5rem;
+  color: #64748b;
+  text-align: center;
+}
+
+.footer p {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.contact-redirect {
+  text-align: center;
+  padding: 0 0 5rem;
+}
+
+.contact-redirect p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+.contact-link {
+  text-decoration: none;
+  color: var(--primary-blue);
+  font-weight: 700;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+.contact-link:hover {
+  color: var(--dark-blue);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hero-wrapper { padding-bottom: 100px; }
+  .hero h2 { font-size: 2.75rem; }
+  .card { margin-top: -80px; padding: 2rem; }
+  .stats-section { grid-template-columns: 1fr 1fr; }
+  .features-grid { grid-template-columns: 1fr; }
+}

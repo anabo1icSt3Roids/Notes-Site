@@ -55,7 +55,7 @@ signupBtn.addEventListener('click', async () => {
     if (adminEmails.includes(user.email.toLowerCase())) {
         window.location.href = 'dashboard.html';
     } else {
-        window.location.href = 'index.html';
+        window.location.href = 'home.html';
     }
   } catch (error) {
     console.error("Signup Error:", error);
