@@ -1,0 +1,697 @@
+/* ==========================================================================
+   Admin Dashboard Stylesheet (dashboard.css) - Locked Bright Theme
+   ========================================================================== */
+
+/* Import Modern Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap');
+
+/* CSS Custom Variables for Theming - Permanently Locked to Bright/Light Scheme */
+:root {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
+
+  /* Accent Colors */
+  --primary-blue: #1a3b8b; /* Matched to Logo Navy */
+  --primary: var(--primary-blue);
+  --primary-hover: #132c66;
+  --primary-light: #eff6ff; /* Very soft blue tint */
+
+  /* Brand Core Layout Colors - Locked to White and Light Gray */
+  --bg-primary: #ffffff; /* Crisp White Canvas */
+  --bg-secondary: #f8fafc; /* Clean Light Slate Gray for alternating sections */
+  --bg-tertiary: #f1f5f9; /* Border background / file select */
+
+  --text-primary: #0f172a; /* Deep near-black */
+  --text-secondary: #334155; /* Charcoal */
+  --text-muted: #64748b; /* Slate gray */
+
+  --success: #059669; /* Emerald */
+  --success-hover: #047857;
+  --success-light: #ecfdf5;
+
+  --danger: #dc2626; /* Crimson Red */
+  --danger-hover: #b91c1c;
+  --danger-light: #fef2f2;
+
+  --border-color: #e2e8f0;
+  --border-hover: #cbd5e1;
+
+  /* Layout and Effects */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
+  --shadow-glow: 0 0 20px rgba(37, 99, 235, 0.12);
+
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+nav {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo-img {
+  height: 38px;
+  width: auto;
+}
+
+nav h1 {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  background: #000000;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+nav h1::before {
+  display: none; /* Hide duplicate icon, since logo.png is used */
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+nav li a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+  position: relative;
+}
+
+nav li a:hover {
+  color: var(--primary-blue);
+  background-color: var(--primary-light);
+}
+
+nav li a::after {
+  display: none;
+}
+
+nav li a:hover::after {
+  width: 60%;
+}
+
+nav li a.active {
+  color: var(--primary-blue);
+  background-color: var(--primary-light);
+}
+
+nav li a.active::after {
+  width: 60%;
+}
+
+@media (max-width: 640px) {
+  nav {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  nav ul {
+    width: 100%;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  nav li a {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+/* ==========================================================================
+   Layout Containers & Sections
+   ========================================================================== */
+section {
+  padding: 5rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+  scroll-margin-top: 80px;
+}
+
+section:nth-of-type(even) {
+  background-color: var(--bg-secondary);
+}
+
+section:nth-of-type(odd) {
+  background-color: var(--bg-primary);
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+  letter-spacing: -0.02em;
+}
+
+section h2::after {
+  display: none;
+}
+
+/* ==========================================================================
+   Form Styling (Upload Section)
+   ========================================================================== */
+form {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-md);
+  display: grid;
+  gap: 1.25rem;
+  position: relative;
+  transition: var(--transition);
+}
+
+form:focus-within {
+  box-shadow: var(--shadow-glow);
+  border-color: var(--primary-blue);
+}
+
+label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: -0.5rem;
+  display: inline-block;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: var(--transition);
+}
+
+input[type="text"]:focus,
+select:focus {
+  border-color: var(--primary-blue);
+  background-color: var(--bg-primary);
+  box-shadow: 0 0 0 4px var(--primary-light);
+}
+
+input[type="file"] {
+  width: 100%;
+  padding: 1.5rem;
+  background-color: var(--bg-tertiary);
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  transition: var(--transition);
+  position: relative;
+}
+
+input[type="file"]::file-selector-button {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  margin-right: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: var(--primary-hover);
+}
+
+input[type="file"]:hover {
+  border-color: var(--primary-blue);
+  background-color: var(--bg-primary);
+}
+
+button {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  border-radius: var(--radius-md);
+}
+
+button[type="submit"] {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+  padding: 1rem 2rem;
+  width: 100%;
+  box-shadow: var(--shadow-md);
+  margin-top: 1rem;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+}
+
+button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Delete Section (Filter Box & PDF Cards)
+   ========================================================================== */
+.filter-box {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+  box-shadow: var(--shadow-sm);
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  align-items: flex-end;
+  gap: 1.5rem;
+}
+
+.filter-box label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.filter-box button {
+  background-color: var(--primary-blue);
+  color: white;
+  padding: 0.875rem 2rem;
+  height: 48px;
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-box button:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .filter-box {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    align-items: stretch;
+  }
+
+  .filter-box button {
+    height: auto;
+    margin-top: 0.5rem;
+  }
+}
+
+.pdf-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.pdf-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.pdf-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--primary-blue);
+  opacity: 0.8;
+}
+
+.pdf-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-hover);
+}
+
+.pdf-card p {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+  word-break: break-word;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pdf-card p::before {
+  content: '📄';
+  font-size: 1.2rem;
+}
+
+.pdf-card .pdf-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.pdf-card .pdf-meta span {
+  background-color: var(--bg-tertiary);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+}
+
+.pdf-card button {
+  background-color: var(--danger-light);
+  color: var(--danger);
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  width: 100%;
+  text-align: center;
+}
+
+.pdf-card button:hover {
+  background-color: var(--danger);
+  color: white;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-muted);
+  font-style: italic;
+  background: var(--bg-tertiary);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-md);
+}
+
+/* ==========================================================================
+   View Section (Branch lists & Semester accordion)
+   ========================================================================== */
+.branch-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .branch-list {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.branch {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.branch:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.branch h3 {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.branch h3::after {
+  content: '';
+  font-size: 1rem;
+}
+
+.branch ul {
+  list-style: none;
+}
+
+.branch > ul > li {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.5rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid transparent;
+  transition: var(--transition);
+  position: relative;
+}
+
+.branch > ul > li:hover {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.branch > ul > li > ul {
+  margin-top: 0.75rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--primary-light);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.branch > ul > li > ul > li {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+}
+
+.branch > ul > li > ul > li::before {
+  content: '📎';
+  font-size: 0.9rem;
+}
+
+.branch > ul > li > ul > li:hover {
+  border-color: var(--primary-blue);
+  background-color: var(--primary-light);
+  color: var(--primary-blue);
+  transform: translateX(4px);
+}
+
+.branch > ul > li.has-pdfs {
+  background-color: var(--primary-light);
+  border-color: rgba(37, 99, 235, 0.2);
+  color: var(--primary-blue);
+}
+
+/* ==========================================================================
+   Footer (Solid Black Footer with High Contrast Text Fix)
+   ========================================================================== */
+.footer {
+  background-color: #000000; /* Solid Black Background */
+  padding: 4rem 1.5rem;
+  color: #e2e8f0; /* Light slate gray instead of dark gray for contrast */
+  text-align: center;
+}
+
+.footer p {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #ffffff; /* Bright white text to make it perfectly readable */
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   Interactive Additions (Toast Notifications & Smooth Scroll)
+   ========================================================================== */
+.toast-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  z-index: 1000;
+}
+
+.toast {
+  background-color: var(--bg-primary);
+  border-left: 4px solid var(--primary-blue);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  padding: 1rem 1.5rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  min-width: 280px;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  transform: translateY(50px);
+  opacity: 0;
+  animation: slideIn 0.3s forwards cubic-bezier(0.16, 1, 0.3, 1);
+  transition: var(--transition);
+}
+
+.toast.success {
+  border-left-color: var(--success);
+}
+
+.toast.danger {
+  border-left-color: var(--danger);
+}
+
+.toast .close-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.toast .close-btn:hover {
+  color: var(--text-primary);
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 5px;
+  border: 2px solid var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}

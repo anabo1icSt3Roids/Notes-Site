@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up - Resource Portal</title>
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+
+  <div class="login-card">
+    <div class="header-icon">
+      <i data-lucide="user-plus"></i>
+    </div>
+
+    <h1>Create Account</h1>
+    <p class="subtitle">Join the GCU Notes Portal to get started</p>
+
+    <!-- Email Field -->
+    <div class="input-field">
+      <label>Email address</label>
+      <div class="input-wrapper">
+        <i data-lucide="mail"></i>
+        <input type="email" id="emailInput" placeholder="Enter your email">
+      </div>
+    </div>
+
+    <!-- Password Field -->
+    <div class="input-field">
+      <label>Password</label>
+      <div class="input-wrapper">
+        <i data-lucide="lock"></i>
+        <input type="password" id="passwordInput" placeholder="Create a password">
+        <span id="passToggle" class="eye-toggle"><i data-lucide="eye"></i></span>
+      </div>
+    </div>
+
+    <!-- Confirm Password Field -->
+    <div class="input-field">
+      <label>Confirm Password</label>
+      <div class="input-wrapper">
+        <i data-lucide="lock"></i>
+        <input type="password" id="confirmPasswordInput" placeholder="Confirm your password">
+      </div>
+    </div>
+
+    <!-- Main Button -->
+    <button id="signupBtn" class="btn-login">Create Account</button>
+
+    <p class="footer-text">
+      Already have an account? <a href="login.html">Login here</a>
+    </p>
+  </div>
+
+  <script type="module" src="signup.js"></script>
+</body>
+</html>

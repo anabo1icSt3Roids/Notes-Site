@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+  <!-- Header & Navbar -->
+  <header>
+    <nav>
+      <a href="landing.html" class="nav-brand">
+        <img src="logo.png" alt="University Logo" class="logo-img">
+        <h1><span>Admin Dashboard</span></h1>
+      </a>
+
+      <ul>
+        <li><a href="#upload">Upload</a></li>
+        <li><a href="#delete">Delete</a></li>
+        <li><a href="#view">View</a></li>
+        <li><a href="landing.html">Log Out</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Upload Section -->
+    <section id="upload">
+      <div class="container">
+        <h2 class="section-title">Upload Resources</h2>
+
+        <form id="uploadForm">
+          <div class="input-group">
+            <label>Select Branch</label>
+            <select id="uploadBranch">
+              <option value="CSE">CSE</option>
+              <option value="ECE">ECE</option>
+              <option value="ME">ME</option>
+              <option value="CE">CE</option>
+              <option value="EE">EE</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label>Select Semester</label>
+            <select id="uploadSem">
+              <option value="1">Semester 1</option>
+              <option value="2">Semester 2</option>
+              <option value="3">Semester 3</option>
+              <option value="4">Semester 4</option>
+              <option value="5">Semester 5</option>
+              <option value="6">Semester 6</option>
+              <option value="7">Semester 7</option>
+              <option value="8">Semester 8</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label>Subject Name</label>
+            <input type="text" id="uploadSubject" placeholder="Enter subject name" required>
+          </div>
+          
+          <div class="input-group">
+            <label>Resource Title</label>
+            <input type="text" id="uploadTitle" placeholder="Unit 1 Notes / PYQ / Lab Manual" required>
+          </div>
+          
+          <div class="input-group">
+            <label>File Upload</label>
+            <input type="file" id="uploadFile" class="file-input" required>
+          </div>
+
+          <button type="submit" class="btn-primary">Upload Resource</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Delete Section -->
+    <section id="delete">
+      <div class="container">
+        <h2 class="section-title">Delete Resources</h2>
+
+        <div class="filter-box">
+          <div class="input-group">
+            <label>Branch</label>
+            <select id="filterBranch">
+              <option value="CSE">CSE</option>
+              <option value="ECE">ECE</option>
+              <option value="ME">ME</option>
+              <option value="CE">CE</option>
+              <option value="EE">EE</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label>Semester</label>
+            <select id="filterSem">
+              <option value="1">Semester 1</option>
+              <option value="2">Semester 2</option>
+              <option value="3">Semester 3</option>
+              <option value="4">Semester 4</option>
+              <option value="5">Semester 5</option>
+              <option value="6">Semester 6</option>
+              <option value="7">Semester 7</option>
+              <option value="8">Semester 8</option>
+            </select>
+          </div>
+
+          <button id="searchBtn" class="btn-primary">Search</button>
+        </div>
+
+        <div class="pdf-list" id="manageGrid">
+          <!-- Dynamically loaded items will appear here -->
+          <div class="empty-state" style="grid-column: 1/-1;">
+             <p>Select filters and search to manage resources.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- View Section -->
+    <section id="view">
+      <div class="container">
+        <h2 class="section-title">Available Resources</h2>
+
+        <div class="branch-list" id="globalViewGrid">
+           <!-- Branch cards will be dynamically populated or updated here -->
+           <p style="grid-column: 1/-1; text-align: center; opacity: 0.6;">Loading global overview...</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2026 GCU Notes Portal | All rights reserved</p>
+  </footer>
+
+  <!-- Highlight Active Navigation Link based on click and scroll -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const navLinks = document.querySelectorAll('nav ul li a');
+      const sections = document.querySelectorAll('main section');
+
+      // Click handler to instantly highlight active link
+      navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          if (href && href.startsWith('#')) {
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+          }
+        });
+      });
+
+      // Scroll observer or offset checker to highlight active section on scroll
+      const highlightActiveSection = () => {
+        let scrollPosition = window.scrollY || document.documentElement.scrollTop;
+        let currentSectionId = '';
+
+        // Add extra tolerance to detect section switch slightly earlier
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 120;
+          const sectionHeight = section.offsetHeight;
+          const sectionId = section.getAttribute('id');
+
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            currentSectionId = sectionId;
+          }
+        });
+
+        if (currentSectionId) {
+          navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === `#${currentSectionId}`) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        }
+      };
+
+      window.addEventListener('scroll', highlightActiveSection);
+      highlightActiveSection(); // Run once on page load to set correct initial state
+    });
+  </script>
+
+  <script type="module" src="dashboard.js"></script>
+
+</body>
+</html>

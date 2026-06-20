@@ -1,0 +1,25 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // SECURING THE RESOURCES COLLECTION
+    match /resources/{resourceId} {
+      
+      // 1. PUBLIC ACCESS: Anyone can browse the notes
+      allow read: if true;
+      
+      // 2. ADMIN ACCESS: Only these 3 emails can Add, Edit, or Delete
+      allow create, update, delete: if request.auth != null && (
+        request.auth.token.email == "warmblanket05@gmail.com" ||
+        request.auth.token.email == "drparadoxkalita@gmail.com" ||
+        request.auth.token.email == "talukdaryuvraj8@gmail.com"
+      );
+    }
+
+    // Optional: Lock down everything else
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

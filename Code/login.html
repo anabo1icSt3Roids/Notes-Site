@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Resource Portal</title>
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+
+  <div class="login-card">
+    <!-- Role-based Icon -->
+    <div class="header-icon" id="roleIndicator">
+      <i data-lucide="user"></i>
+    </div>
+
+    <h1>Welcome</h1>
+    <p class="subtitle">Sign in to your account to continue</p>
+
+    <!-- Role Selector -->
+    <div class="role-tabs">
+      <button id="tabUser" class="tab active">
+        <i data-lucide="user"></i>
+        User
+      </button>
+      <button id="tabAdmin" class="tab">
+        <i data-lucide="shield"></i>
+        Admin
+      </button>
+    </div>
+
+    <!-- Email Field -->
+    <div class="input-field">
+      <label>Email address</label>
+      <div class="input-wrapper">
+        <i data-lucide="mail"></i>
+        <input type="email" id="emailInput" placeholder="user@demo.com">
+      </div>
+    </div>
+
+    <!-- Password Field -->
+    <div class="input-field">
+      <div style="display:flex; justify-content:space-between;">
+        <label>Password</label>
+        <a href="#" class="forgot-link" id="forgotLink">Forgot password?</a>
+      </div>
+      <div class="input-wrapper">
+        <i data-lucide="lock"></i>
+        <input type="password" id="passwordInput" placeholder="Enter your password">
+        <span id="passToggle" class="eye-toggle"><i data-lucide="eye"></i></span>
+      </div>
+    </div>
+
+    <!-- Remember Me -->
+    <div class="extra-options">
+      <label class="remember-me">
+        <input type="checkbox" checked style="width:16px; height:16px;">
+        Remember me for 30 days
+      </label>
+    </div>
+
+    <!-- Main Button -->
+    <button id="loginBtn" class="btn-login">Sign in as User</button>
+
+    <p class="footer-text">
+      Don't have an account? <a href="signup.html" id="createAccount">Create one</a>
+    </p>
+  </div>
+
+  <script type="module" src="login.js"></script>
+</body>
+</html>
