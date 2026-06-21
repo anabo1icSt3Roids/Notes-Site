@@ -1,0 +1,6 @@
+.git
+.gitignore
+Code/
+Report/
+README.md
+firestore.rules
